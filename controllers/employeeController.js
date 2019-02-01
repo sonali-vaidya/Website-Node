@@ -1,7 +1,7 @@
 const express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
-const employee = mongoose.model('employee');
+const Employee = mongoose.model('employee');
 
 router.get('/', (req, res) => {
     res.render("employee/addOrEdit", {
@@ -18,13 +18,16 @@ router.post('/', (req, res) => {
 
 
 function insertRecord(req, res) {
-    var employee = new employee();
+    var employee = new Employee();
     employee.fullName = req.body.fullName;
     employee.EmployeeID = req.body.EmployeeID;
     employee.email = req.body.email;
-    employee.mobile = req.body.mobile;
+    employee.Mobile = req.body.mobile;
     employee.IMEI = req.body.IMEI;
+    console.log(req.body)
     employee.save((err, doc) => {
+        console.log(err)
+        console.log(doc)
         if (!err)
             res.redirect('employee/list');
         else {

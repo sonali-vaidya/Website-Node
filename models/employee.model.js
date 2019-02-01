@@ -13,7 +13,7 @@ var employeeSchema = new mongoose.Schema({
         type: String,
         required: 'This field is required.'
     },
-    
+
     Mobile: {
         type: String,
         required: 'This field is required.'
@@ -30,4 +30,4 @@ employeeSchema.path('email').validate((val) => {
     return emailRegex.test(val);
 }, 'Invalid e-mail.');
 
-mongoose.model('Employee', employeeSchema);
+mongoose.model('employee', employeeSchema);
